@@ -1,27 +1,33 @@
 {
   "hosting": {
-    "public": "dist",
+    "public": "public",
     "ignore": [
       "firebase.json",
-      "**/.*",
+      "**/.*/",
       "**/node_modules/**"
     ],
     "rewrites": [
       {
         "source": "**",
-        "destination": "/index.html"
+        "run": {
+          "serviceId": "sbrbeautyhub",
+          "region": "asia-south2"
+        }
       }
     ],
     "headers": [
       {
-        "source": "**/*.@(css|js|woff2)",
+        "source": "**",
         "headers": [
           {
             "key": "Cache-Control",
-            "value": "max-age=31536000"
+            "value": "public, max-age=3600"
           }
         ]
       }
     ]
+  },
+  "projects": {
+    "default": "sbrempire"
   }
 }
